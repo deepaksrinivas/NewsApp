@@ -76,19 +76,23 @@ class NewsSourcesViewController: UIViewController {
 //        gridBarButton = UIBarButtonItem(image: gridIcon, style: .plain, target: self, action: #selector(decisionTapped(sender:)))
 //        hugeBarButton = UIBarButtonItem(image: hugeIcon, style: .plain, target: self, action: #selector(decisionTapped(sender:)))
         
-        listBarButton = UIBarButtonItem(customView: ListIconView.getView())
-        listBarButton.target = self
-        listBarButton.action = #selector(decisionTapped(sender:))
+//        listBarButton = UIBarButtonItem(customView: ListIconView.getView())
+//        listBarButton.target = self
+//        listBarButton.action = #selector(decisionTapped(sender:))
+//        
+//        gridBarButton = UIBarButtonItem(customView: GridIconView.getView())
+//        gridBarButton.target = self
+//        gridBarButton.action = #selector(decisionTapped(sender:))
+//        
+//        hugeBarButton = UIBarButtonItem(customView: HugeIconView.getView())
+//        hugeBarButton.target = self
+//        hugeBarButton.action = #selector(decisionTapped(sender:))
+//        
+//        navigationItem.rightBarButtonItem = gridBarButton
         
-        gridBarButton = UIBarButtonItem(customView: GridIconView.getView())
-        gridBarButton.target = self
-        gridBarButton.action = #selector(decisionTapped(sender:))
-        
-        hugeBarButton = UIBarButtonItem(customView: HugeIconView.getView())
-        hugeBarButton.target = self
-        hugeBarButton.action = #selector(decisionTapped(sender:))
-        
-        navigationItem.rightBarButtonItem = gridBarButton
+        listBarButton = UIBarButtonItem(title: "List", style: .plain, target: self, action: #selector(decisionTapped(sender:)))
+        gridBarButton = UIBarButtonItem(title: "Grid", style: .plain, target: self, action: #selector(decisionTapped(sender:)))
+        hugeBarButton = UIBarButtonItem(title: "Huge", style: .plain, target: self, action: #selector(decisionTapped(sender:)))
     }
     
     func decisionTapped(sender: UIBarButtonItem) {
