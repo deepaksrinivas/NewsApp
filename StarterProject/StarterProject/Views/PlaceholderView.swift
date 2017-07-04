@@ -55,7 +55,8 @@ class PlaceholderView: UIView {
         finalName = finalName.characters.count > 0 ? finalName : "?"
         placeholderView.iconLabel.text = finalName
         let allColorsCount = Colors.allColors.count
-        let randomIndex = Int(arc4random()) % allColorsCount
+//        let randomIndex = Int(arc4random()) % allColorsCount
+        let randomIndex = Int(arc4random_uniform(UInt32(allColorsCount)))
         placeholderView.backgroundColor = Colors.allColors[randomIndex].rawValue
         placeholderView.layer.cornerRadius = 50
         placeholderView.clipsToBounds = true
