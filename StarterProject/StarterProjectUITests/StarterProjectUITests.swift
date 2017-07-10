@@ -28,21 +28,21 @@ class StarterProjectUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testNewsTable() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        
-        let app = XCUIApplication()
-        app.collectionViews.staticTexts["Australia's most trusted source of local, national and world news. Comprehensive, independent, in-depth analysis, the latest business, sport, weather and more."].tap()
-        app.navigationBars["ABC News (AU)"].buttons["News"].tap()
-        
-        let newsNavigationBar = app.navigationBars["News"]
-        newsNavigationBar.buttons["Grid"].tap()
-        newsNavigationBar.buttons["Huge"].tap()
-        newsNavigationBar.buttons["List"].tap()
-        
-    }
+//    func testNewsTable() {
+//        // Use recording to get started writing UI tests.
+//        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//        
+//        
+//        let app = XCUIApplication()
+//        app.collectionViews.staticTexts["Australia's most trusted source of local, national and world news. Comprehensive, independent, in-depth analysis, the latest business, sport, weather and more."].tap()
+//        app.navigationBars["ABC News (AU)"].buttons["News"].tap()
+//        
+//        let newsNavigationBar = app.navigationBars["News"]
+//        newsNavigationBar.buttons["Grid"].tap()
+//        newsNavigationBar.buttons["Huge"].tap()
+//        newsNavigationBar.buttons["List"].tap()
+//        
+//    }
     
     var scrollEndFrame: CGFloat = 0
     
