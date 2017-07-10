@@ -44,4 +44,70 @@ class StarterProjectUITests: XCTestCase {
         
     }
     
+    var scrollEndFrame: CGFloat = 0
+    
+    func testNewsCollection() {
+        let app = XCUIApplication()
+        let indicatorCount = app.activityIndicators.count
+        if indicatorCount > 0 {
+            let collectionCellsPredicate = NSPredicate(format: "count > 0")
+            expectation(for: collectionCellsPredicate, evaluatedWith: app.collectionViews.cells, handler: nil)
+            waitForExpectations(timeout: 5, handler: nil)
+            
+            var scrollEnd = true
+            while scrollEnd {
+                let elementsAvailable = findCollectionCells(for: app)
+                if elementsAvailable {
+                    scrollTo(position: .bottom, for: app.collectionViews.element)
+                    scrollTo(position: .bottom, for: app.collectionViews.element)
+                    scrollTo(position: .bottom, for: app.collectionViews.element)
+                    scrollTo(position: .bottom, for: app.collectionViews.element)
+                } else {
+                    scrollEnd = false
+                    scrollEndFrame = 0
+                }
+            }
+        } else {
+            XCTFail("No activity indicator showing up")
+        }
+        
+//        addUIInterruptionMonitor(withDescription: "") { (alert) -> Bool in
+//            return true
+//        }
+    }
+    
+    func findCollectionCells(for app: XCUIApplication) -> Bool {
+        let cellsCount = app.collectionViews.cells.count
+        if cellsCount > 0 {
+            for cell in app.collectionViews.cells.allElementsBoundByIndex {
+                if cell.isHittable {
+                    cell.tap()
+                    app.navigationBars.buttons["News"].tap()
+                }
+            }
+            let lastCell = app.collectionViews.cells.element(boundBy: cellsCount - 1)
+            let currentScrollEndFrame = lastCell.frame.origin.y + lastCell.frame.size.height
+            if scrollEndFrame < currentScrollEndFrame {
+                scrollEndFrame = currentScrollEndFrame
+                return true
+            }
+            return false
+        } else {
+            return false
+        }
+    }
+    
+    enum ScrollPosition {
+        case top
+        case bottom
+    }
+    
+    func scrollTo(position: ScrollPosition, for element: XCUIElement) {
+        switch position {
+            case .top:
+                element.swipeDown()
+            case .bottom:
+                element.swipeUp()
+        }
+    }
 }
