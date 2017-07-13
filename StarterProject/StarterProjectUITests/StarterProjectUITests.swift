@@ -52,7 +52,7 @@ class StarterProjectUITests: XCTestCase {
         if indicatorCount > 0 {
             let collectionCellsPredicate = NSPredicate(format: "count > 0")
             expectation(for: collectionCellsPredicate, evaluatedWith: app.collectionViews.cells, handler: nil)
-            waitForExpectations(timeout: 5, handler: nil)
+            waitForExpectations(timeout: 20, handler: nil)
             
             var scrollEnd = true
             while scrollEnd {
